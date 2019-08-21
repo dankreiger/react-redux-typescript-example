@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import { todosReducer, Todo } from './todos';
+import { todosReducer, TodosReducerState } from './todos';
 
 export interface StoreState {
-  readonly todos: Todo[];
+  todosReducer: TodosReducerState;
 }
 
 export default combineReducers<StoreState>({
-  todos: todosReducer
+  todosReducer
 });

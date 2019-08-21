@@ -1,14 +1,28 @@
 import { TodosActionTypes } from './todos.enum';
 
+export interface TodosReducerState {
+  todos: Todo[];
+  loading: boolean;
+  error: any;
+}
 export interface Todo {
   id: number;
   title: string;
   completed: boolean;
 }
 
-export interface FetchTodosAction {
-  type: TodosActionTypes.fetchTodos;
+export interface FetchTodosBeginAction {
+  type: TodosActionTypes.fetchTodosBegin;
+}
+
+export interface FetchTodosSuccessAction {
+  type: TodosActionTypes.fetchTodosSuccess;
   payload: Todo[];
+}
+
+export interface FetchTodosFailureAction {
+  type: TodosActionTypes.fetchTodosFailure;
+  payload: any;
 }
 
 export interface DeleteTodoAction {
@@ -16,4 +30,8 @@ export interface DeleteTodoAction {
   payload: number;
 }
 
-export type TodoAction = FetchTodosAction | DeleteTodoAction;
+export type TodoAction =
+  | FetchTodosBeginAction
+  | FetchTodosSuccessAction
+  | FetchTodosFailureAction
+  | DeleteTodoAction;
