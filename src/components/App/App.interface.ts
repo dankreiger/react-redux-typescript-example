@@ -6,7 +6,3 @@ export interface AppProps {
   fetchTodos: Function;
   deleteTodo: typeof deleteTodo;
 }
-
-export interface AppState {
-  fetching: boolean;
-}
