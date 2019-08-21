@@ -17,16 +17,17 @@ const App: FunctionComponent<AppProps> = ({
   fetchTodos,
   deleteTodo
 }: AppProps): JSX.Element => {
-  const handleOnClick = () => fetchTodos();
   if (loading) {
     return <div>loading...</div>;
   }
   return (
     <AppWrapper>
-      <AppButton onClick={handleOnClick}>Fetch</AppButton>
+      <AppButton onClick={() => fetchTodos()}>Fetch</AppButton>
       <AppList>
         {todos.map(({ id, title }: Todo) => (
-          <li key={id}>{title}</li>
+          <li key={id} onClick={() => deleteTodo(id)}>
+            {title}
+          </li>
         ))}
       </AppList>
     </AppWrapper>
